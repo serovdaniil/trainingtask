@@ -6,7 +6,6 @@ import java.sql.Date;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
 public class DateValidatorImpl implements DateValidator {
     private static final String REGEX_STRING = "^.{1,40}$";
@@ -18,12 +17,8 @@ public class DateValidatorImpl implements DateValidator {
     @Override
     public boolean isNumberValidator(Long id) {
         if ((id % 2 == 0) || (id % 2 == 1) || (id > 0)) {
-            System.out.println(id % 2);
-            System.out.println(IntStream.rangeClosed(2, Math.toIntExact(id / 2)).anyMatch(i -> id % i == 0));
-            System.out.println(id.longValue());
             return true;
         }else {
-            System.out.println(id % 2);
             return false;}
     }
 

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
 }
+apply plugin: 'war'
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -14,7 +15,14 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.6.0'
+// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+    implementation("org.apache.tomcat:tomcat:9.0.54")
 }
+
 
 test {
     useJUnitPlatform()

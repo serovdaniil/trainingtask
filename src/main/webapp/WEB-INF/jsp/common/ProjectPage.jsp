@@ -1,0 +1,61 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Список проектов</title>
+</head>
+<body>
+<style>
+    <%@include file="/WEB-INF/css/dataListStyle.css"%>
+    <%@include file="/WEB-INF/css/tableStyle.css"%>
+</style>
+<%@include file="/WEB-INF/jsp/common/Header.jsp" %>
+<%--
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th><a href="${pageContext.request.contextPath}/controller?command=project_page">Создать проект</a></th>
+    </tr>
+    <c:forEach var="project" items="${requestScope.projects}">
+        <form name="conferenc-form" action="${pageContext.request.contextPath}/controller?command=remove_project"
+              method="post">
+            <tr>
+                <td><input class="container" type="text" name="id" readonly
+                           value="${project.id}"/></td>
+                <td><input class="container" type="text" name="id" readonly
+                           value="${project.name}"/></td>
+                <td><input class="container" type="text" name="id" readonly
+                           value="${project.name}"/></td>
+                <td>
+                    <button type="submit" class="button">Удалить</button>
+                </td>
+            </tr>
+        </form>
+    </c:forEach>
+</table>
+--%>
+<ul class="list3a">
+    <c:forEach var="project" items="${requestScope.projects}">
+        <form name="project" action="${pageContext.request.contextPath}/controller?command=remove_project"
+              method="post">
+            <li>
+                <label for="projectId-input">ID:</label>
+                <input id="projectId-input" class="container" type="text" name="id" readonly
+                       value="${project.id}"/>
+                <label for="projectName-input">Название:</label>
+                <input id="projectName-input" class="container" type="text" name="id" readonly
+                       value="${project.name}"/>
+                <label for="projectDescription-input">Описание:</label>
+                <input id="projectDescription-input" class="container" type="text" name="id" readonly
+                       value="${project.name}"/>
+                <button type="submit" class="button">Удалить</button>
+
+            </li>
+        </form>
+    </c:forEach>
+</ul>
+</body>
+</html>

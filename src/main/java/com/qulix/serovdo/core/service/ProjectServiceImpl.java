@@ -2,6 +2,7 @@ package com.qulix.serovdo.core.service;
 
 import com.qulix.serovdo.api.entity.Project;
 import com.qulix.serovdo.api.service.ProjectService;
+import com.qulix.serovdo.core.connection.ConnectionDb;
 import com.qulix.serovdo.core.dao.ProjectDaoImpl;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.ServiceException;
@@ -85,5 +86,13 @@ public class ProjectServiceImpl implements ProjectService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    public static ProjectServiceImpl getInstance() {
+        return ProjectServiceImpl.Holder.INSTANCE;
+    }
+
+    private static class Holder {
+        public static final ProjectServiceImpl INSTANCE = new ProjectServiceImpl(new ProjectDaoImpl(new ConnectionDb()));
     }
 }

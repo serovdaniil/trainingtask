@@ -23,6 +23,7 @@ public class  EmployeeDaoImpl implements EmployeeDao {
             "last_name=?, patronymic=?, position=? WHERE ID_EMPLOYEE=?";
     private static final String FIND_ALL_EMPLOYEE = "SELECT * FROM EMPLOYEE";
     private static final String FIND_EMPLOYEE_BY_ID = "SELECT * FROM EMPLOYEE WHERE ID_EMPLOYEE=?";
+
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
     private final ConnectionDb connectionBd;

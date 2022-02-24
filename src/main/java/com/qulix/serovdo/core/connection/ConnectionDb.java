@@ -12,7 +12,6 @@ public class ConnectionDb {
     public Connection gerConnection() throws SQLException {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
-            System.out.println("connection Ok");
         } catch (Exception e) {
             System.err.println("ERROR: failed to load HSQLDB JDBC driver.");
         }
