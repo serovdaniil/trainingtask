@@ -1,4 +1,4 @@
-package com.qulix.serovdo.core.command.page.project;
+package com.qulix.serovdo.core.command.function.project;
 
 import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
@@ -7,27 +7,26 @@ import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
 import com.qulix.serovdo.api.entity.Project;
 import com.qulix.serovdo.core.exception.ServiceException;
+import com.qulix.serovdo.core.exception.ValidationException;
 import com.qulix.serovdo.core.service.ProjectServiceImpl;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-/**
- * This page displays categories
- *
- * @author Daniil Serov
- */
-public class ShowProjectPageCommand implements Command {
+public class UpdateProjectCommand implements Command {
     private static final String PROJECT_ATTRIBUTE_NAME = "projects";
+    private static final String PARAM_NAME = "name";
+    private static final String PARAM_DESCRIPTION = "description";
+    private static final String PARAM_ID = "id";
     private static final String PROJECT_PAGE = "page.project";
-
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
     private final ProjectServiceImpl service;
     private final RequestFactory requestFactory;
     private final PropertyContext propertyContext;
 
-    ShowProjectPageCommand() {
+    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+
+    UpdateProjectCommand() {
         this.service = ProjectServiceImpl.getInstance();
         this.requestFactory = RequestFactory.getInstance();
         this.propertyContext = PropertyContext.instance();
@@ -35,21 +34,25 @@ public class ShowProjectPageCommand implements Command {
 
     @Override
     public CommandResponse execute(CommandRequest request) {
+        final Long id = Long.parseLong(request.getParameter(PARAM_ID));
+        final String name = request.getParameter(PARAM_NAME);
+        final String description = request.getParameter(PARAM_DESCRIPTION);
         try {
+            boolean resultOperation=service.updateEntity(id, name, description);
             final List<Project> allProject = service.findAll();
             request.addAttributeToJsp(PROJECT_ATTRIBUTE_NAME, allProject);
-        } catch (ServiceException e) {
-            logger.warning("Show all projects:" + e);
+        } catch (ServiceException | ValidationException e) {
+            logger.warning("Update project:" + e);
         }
         return requestFactory.createForwardResponse(propertyContext.get(PROJECT_PAGE));
     }
 
-    public static ShowProjectPageCommand getInstance() {
-        return Holder.INSTANCE;
+    public static UpdateProjectCommand getInstance() {
+        return UpdateProjectCommand.Holder.INSTANCE;
     }
 
     private static class Holder {
-        public static final ShowProjectPageCommand INSTANCE =
-                new ShowProjectPageCommand();
+        public static final UpdateProjectCommand INSTANCE =
+                new UpdateProjectCommand();
     }
 }

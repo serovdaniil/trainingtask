@@ -8,7 +8,6 @@
 <body>
 <style>
     <%@include file="/WEB-INF/css/dataListStyle.css"%>
-    <%@include file="/WEB-INF/css/tableStyle.css"%>
 </style>
 <%@include file="/WEB-INF/jsp/common/Header.jsp" %>
 <%--
@@ -37,6 +36,7 @@
     </c:forEach>
 </table>
 --%>
+<a class="buttonMore" href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать проект</a>
 <ul class="list3a">
     <c:forEach var="project" items="${requestScope.projects}">
         <form name="project" action="${pageContext.request.contextPath}/controller?command=remove_project"
@@ -50,9 +50,10 @@
                        value="${project.name}"/>
                 <label for="projectDescription-input">Описание:</label>
                 <input id="projectDescription-input" class="container" type="text" name="id" readonly
-                       value="${project.name}"/>
+                       value="${project.description}"/>
                 <button type="submit" class="button">Удалить</button>
-
+                <a class="buttonMore" href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${project.id}">
+                    Изменить проект</a>
             </li>
         </form>
     </c:forEach>

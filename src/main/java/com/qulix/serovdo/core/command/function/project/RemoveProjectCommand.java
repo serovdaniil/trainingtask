@@ -11,6 +11,7 @@ import com.qulix.serovdo.core.exception.ValidationException;
 import com.qulix.serovdo.core.service.ProjectServiceImpl;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * This page displays categories
@@ -20,7 +21,9 @@ import java.util.List;
 public class RemoveProjectCommand implements Command {
     private static final String PROJECT_ATTRIBUTE_NAME = "projects";
     private static final String PARAM_ID = "id";
-    private static final String PROJECT_PAGE = "page.main";
+    private static final String PROJECT_PAGE = "page.project";
+
+    private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
     private final ProjectServiceImpl service;
     private final RequestFactory requestFactory;
@@ -40,6 +43,7 @@ public class RemoveProjectCommand implements Command {
             final List<Project> allProject = service.findAll();
             request.addAttributeToJsp(PROJECT_ATTRIBUTE_NAME, allProject);
         } catch (ServiceException | ValidationException e) {
+            logger.warning("Remove project:" + e);
         }
         return requestFactory.createForwardResponse(propertyContext.get(PROJECT_PAGE));
     }

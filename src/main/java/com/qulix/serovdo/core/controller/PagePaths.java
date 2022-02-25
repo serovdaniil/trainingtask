@@ -2,7 +2,9 @@ package com.qulix.serovdo.core.controller;
 
 public enum PagePaths {
     INDEX("/"),
-    MAIN("/WEB-INF/jsp/common/ProjectPage.jsp");
+    CREATEPROJECT("/WEB-INF/jsp/project/CreateProject.jsp"),
+    UPDATEPROJECT("/WEB-INF/jsp/project/UpdateProject.jsp"),
+    PROJECT("/WEB-INF/jsp/project/ProjectPage.jsp");
 
     private final String path;
 
@@ -20,6 +22,6 @@ public enum PagePaths {
                 return page;
             }
         }
-        return MAIN;
+        return PROJECT;
     }
 }
