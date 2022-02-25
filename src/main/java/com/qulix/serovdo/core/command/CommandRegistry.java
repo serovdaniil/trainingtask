@@ -1,10 +1,15 @@
 package com.qulix.serovdo.core.command;
 
 import com.qulix.serovdo.api.command.Command;
+import com.qulix.serovdo.core.command.function.employee.CreateEmployeeCommand;
+import com.qulix.serovdo.core.command.function.employee.RemoveEmployeeCommand;
+import com.qulix.serovdo.core.command.function.employee.UpdateEmployeeCommand;
 import com.qulix.serovdo.core.command.function.project.CreateProjectCommand;
 import com.qulix.serovdo.core.command.function.project.RemoveProjectCommand;
 import com.qulix.serovdo.core.command.function.project.UpdateProjectCommand;
+import com.qulix.serovdo.core.command.page.employee.ShowCreateEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowEmployeePageCommand;
+import com.qulix.serovdo.core.command.page.employee.ShowUpdateEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowCreateProjectPageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowProjectPageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowUpdateProjectPageCommand;
@@ -17,6 +22,11 @@ public enum CommandRegistry {
     CREATE_PROJECT(CreateProjectCommand.getInstance(), "create_project"),
     SHOW_CREATE_PROJECT_PAGE(ShowCreateProjectPageCommand.getInstance(), "show_create_project_page"),
     EMPLOYEE_PAGE(ShowEmployeePageCommand.getInstance(), "employee_page"),
+    REMOVE_EMPLOYEE(RemoveEmployeeCommand.getInstance(), "remove_employee"),
+    SHOW_CREATE_EMPLOYEE_PAGE(ShowCreateEmployeePageCommand.getInstance(), "show_create_employee_page"),
+    CREATE_EMPLOYEE(CreateEmployeeCommand.getInstance(), "create_employee"),
+    SHOW_UPDATE_EMPLOYEE_PAGE(ShowUpdateEmployeePageCommand.getInstance(), "show_update_employee_page"),
+    UPDATE_EMPLOYEE(UpdateEmployeeCommand.getInstance(), "update_employee"),
     DEFAULT(ShowProjectPageCommand.getInstance(), "");
 
 

@@ -18,7 +18,7 @@ public class UpdateProjectCommand implements Command {
     private static final String PARAM_NAME = "name";
     private static final String PARAM_DESCRIPTION = "description";
     private static final String PARAM_ID = "id";
-    private static final String PROJECT_PAGE = "page.project";
+    private static final String PROJECT_PAGE = "/controller?command=project_page";
 
     private final ProjectServiceImpl service;
     private final RequestFactory requestFactory;
@@ -44,7 +44,7 @@ public class UpdateProjectCommand implements Command {
         } catch (ServiceException | ValidationException e) {
             logger.warning("Update project:" + e);
         }
-        return requestFactory.createForwardResponse(propertyContext.get(PROJECT_PAGE));
+        return requestFactory.createRedirectResponse(PROJECT_PAGE);
     }
 
     public static UpdateProjectCommand getInstance() {

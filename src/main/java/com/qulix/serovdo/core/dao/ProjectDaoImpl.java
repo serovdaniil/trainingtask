@@ -2,6 +2,7 @@ package com.qulix.serovdo.core.dao;
 
 import com.qulix.serovdo.api.dao.ProjectDao;
 import com.qulix.serovdo.api.entity.Project;
+import com.qulix.serovdo.api.entity.Task;
 import com.qulix.serovdo.core.connection.ConnectionDb;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.EntityExtractionFailedException;
@@ -143,8 +144,8 @@ public class ProjectDaoImpl implements ProjectDao {
         try {
             return new Project(
                     resultSet.getLong("id_project"),
-                    resultSet.getString("name_project"),
-                    resultSet.getString("description"));
+                    resultSet.getString("name_project").trim(),
+                    resultSet.getString("description").trim());
         } catch (SQLException e) {
             throw new EntityExtractionFailedException();
         }

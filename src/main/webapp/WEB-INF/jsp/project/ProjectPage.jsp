@@ -7,30 +7,38 @@
 </head>
 <body>
 <style>
-    <%@include file="/WEB-INF/css/dataListStyle.css"%>
+    <%@include file="/WEB-INF/css/tableStyle.css"%>
 </style>
 <%@include file="/WEB-INF/jsp/common/Header.jsp" %>
-<a class="buttonMore" href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать проект</a>
-<ul class="list3a">
+<br>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th><a class="create"
+               href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать
+            проект</a></th>
+    </tr>
     <c:forEach var="project" items="${requestScope.projects}">
         <form name="project" action="${pageContext.request.contextPath}/controller?command=remove_project"
               method="post">
-            <li>
-                <label for="projectId-input">ID:</label>
-                <input id="projectId-input" class="container" type="text" name="id" readonly
-                       value="${project.id}"/>
-                <label for="projectName-input">Название:</label>
-                <input id="projectName-input" class="container" type="text" name="id" readonly
-                       value="${project.name}"/>
-                <label for="projectDescription-input">Описание:</label>
-                <input id="projectDescription-input" class="container" type="text" name="id" readonly
-                       value="${project.description}"/>
-                <button type="submit" class="button">Удалить</button>
-                <a class="buttonMore" href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${project.id}">
-                    Изменить проект</a>
-            </li>
+            <tr>
+                <td><input class="container" type="text" name="id" readonly
+                           value="${project.id}"/></td>
+                <td><input class="container" type="text" name="name" readonly
+                           value="${project.name}"/></td>
+                <td><input class="container" type="text" name="description" readonly
+                           value="${project.description}"/></td>
+                <td>
+                    <a class="create"
+                       href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${project.id}">
+                        Изменить проект</a>
+                    <button type="submit" class="create">Удалить проект</button>
+                </td>
+            </tr>
         </form>
     </c:forEach>
-</ul>
+</table>
 </body>
 </html>

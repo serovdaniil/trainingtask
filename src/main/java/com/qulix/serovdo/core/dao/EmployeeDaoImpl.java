@@ -150,10 +150,10 @@ public class  EmployeeDaoImpl implements EmployeeDao {
         try {
             return new Employee(
                     resultSet.getLong("ID_EMPLOYEE"),
-                    resultSet.getString("FIRTS_NAME"),
-                    resultSet.getString("LAST_NAME"),
-                    resultSet.getString("PATRONYMIC"),
-                    resultSet.getString("POSITION"));
+                    resultSet.getString("FIRTS_NAME").trim(),
+                    resultSet.getString("LAST_NAME").trim(),
+                    resultSet.getString("PATRONYMIC").trim(),
+                    resultSet.getString("POSITION").trim());
         } catch (SQLException e) {
             throw new EntityExtractionFailedException();
         }

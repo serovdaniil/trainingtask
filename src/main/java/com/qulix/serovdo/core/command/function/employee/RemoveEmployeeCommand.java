@@ -1,14 +1,14 @@
-package com.qulix.serovdo.core.command.function.project;
+package com.qulix.serovdo.core.command.function.employee;
 
 import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
 import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
-import com.qulix.serovdo.api.entity.Project;
+import com.qulix.serovdo.api.entity.Employee;
 import com.qulix.serovdo.core.exception.ServiceException;
 import com.qulix.serovdo.core.exception.ValidationException;
-import com.qulix.serovdo.core.service.ProjectServiceImpl;
+import com.qulix.serovdo.core.service.EmployeeServiceImpl;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -18,19 +18,19 @@ import java.util.logging.Logger;
  *
  * @author Daniil Serov
  */
-public class RemoveProjectCommand implements Command {
-    private static final String PROJECT_ATTRIBUTE_NAME = "projects";
+public class RemoveEmployeeCommand implements Command {
+    private static final String EMPLOYEE_ATTRIBUTE_NAME = "employees";
     private static final String PARAM_ID = "id";
-    private static final String PROJECT_PAGE = "/controller?command=project_page";
+    private static final String EMPLOYEE_PAGE = "/controller?command=employee_page";
 
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
-    private final ProjectServiceImpl service;
+    private final EmployeeServiceImpl service;
     private final RequestFactory requestFactory;
     private final PropertyContext propertyContext;
 
-    RemoveProjectCommand() {
-        this.service = ProjectServiceImpl.getInstance();
+    RemoveEmployeeCommand() {
+        this.service = EmployeeServiceImpl.getInstance();
         this.requestFactory = RequestFactory.getInstance();
         this.propertyContext = PropertyContext.instance();
     }
@@ -40,20 +40,20 @@ public class RemoveProjectCommand implements Command {
         final Long id = Long.parseLong(request.getParameter(PARAM_ID));
         try {
             boolean resultOperation=service.removeEntity(id);
-            final List<Project> allProject = service.findAll();
-            request.addAttributeToJsp(PROJECT_ATTRIBUTE_NAME, allProject);
+            final List<Employee> allProject = service.findAll();
+            request.addAttributeToJsp(EMPLOYEE_ATTRIBUTE_NAME, allProject);
         } catch (ServiceException | ValidationException e) {
-            logger.warning("Remove project:" + e);
+            logger.warning("Remove employee:" + e);
         }
-        return requestFactory.createRedirectResponse(PROJECT_PAGE);
+        return requestFactory.createRedirectResponse(EMPLOYEE_PAGE);
     }
 
-    public static RemoveProjectCommand getInstance() {
+    public static RemoveEmployeeCommand getInstance() {
         return Holder.INSTANCE;
     }
 
     private static class Holder {
-        public static final RemoveProjectCommand INSTANCE =
-                new RemoveProjectCommand();
+        public static final RemoveEmployeeCommand INSTANCE =
+                new RemoveEmployeeCommand();
     }
 }

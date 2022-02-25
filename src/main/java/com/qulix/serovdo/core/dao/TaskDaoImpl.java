@@ -18,13 +18,25 @@ import java.util.logging.Logger;
 public class TaskDaoImpl implements TaskDao {
     private static final String CREATE_TASK = "INSERT INTO TASK(STATUS_TASK, NAME_TASK, NAME_PROJECT," +
             " NAME_JOB,START_DATE,FINISH_DATE,EMPLOYEE_ID) values(?,?,?,?,?,?,?)";
+
     private static final String REMOVE_TASK = "DELETE FROM TASK WHERE ID_TASK=?";
+
     private static final String UPDATE_TASK = "UPDATE TASK SET STATUS_TASK=?, NAME_TASK=?, NAME_PROJECT=?, " +
             "NAME_JOB=?,START_DATE=?,FINISH_DATE=?,EMPLOYEE_ID=? WHERE ID_TASK=?";
-    private static final String FIND_ALL_TASK = "SELECT * FROM TASK JOIN PROJECT P on TASK.NAME_PROJECT = P.ID_PROJECT " +
-            "JOIN STATUS_TASK ST on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE";
-    private static final String FIND_TASK_BY_ID = "SELECT *FROM TASK JOIN PROJECT P on TASK.NAME_PROJECT = P.ID_PROJECT" +
-            " JOIN STATUS_TASK ST on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE ID_TASK=?";
+
+    private static final String FIND_ALL_TASK = "SELECT * FROM TASK JOIN PROJECT P " +
+            "on TASK.NAME_PROJECT = P.ID_PROJECT JOIN STATUS_TASK ST " +
+            "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE";
+
+    private static final String FIND_TASK_BY_ID = "SELECT *FROM TASK JOIN PROJECT P " +
+            "on TASK.NAME_PROJECT = P.ID_PROJECT JOIN STATUS_TASK ST " +
+            "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E " +
+            "on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE ID_TASK=?";
+
+    private static final String FIND_ALL_TASK_IN_PROJECT = "SELECT * FROM TASK JOIN PROJECT P " +
+            "on TASK.NAME_PROJECT = P.ID_PROJECT JOIN STATUS_TASK ST " +
+            "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E " +
+            "on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE TASK.NAME_PROJECT=?";
 
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
@@ -41,8 +53,8 @@ public class TaskDaoImpl implements TaskDao {
         logger.info("DAO: Task creation started.");
         try (Connection connection = connectionBd.gerConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_TASK)) {
-            extracted(status, name, nameProject, job,  startDate,
-                     finishDate,employee, statement);
+            extracted(status, name, nameProject, job, startDate,
+                    finishDate, employee, statement);
             int rowCount = statement.executeUpdate();
             if (rowCount != 0) {
                 result = true;
@@ -60,7 +72,7 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     private void extracted(StatusTask status, String name, Project nameProject, String job,
-                           String startDate, String finishDate,Employee employee,
+                           String startDate, String finishDate, Employee employee,
                            PreparedStatement statement) throws SQLException {
         statement.setLong(1, status.getId());
         statement.setString(2, name);
@@ -78,7 +90,7 @@ public class TaskDaoImpl implements TaskDao {
         logger.info("DAO: Task update started.");
         try (Connection connection = connectionBd.gerConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_TASK)) {
-            extracted(status, name, nameProject, job,  startDate,
+            extracted(status, name, nameProject, job, startDate,
                     finishDate, employee, statement);
             statement.setLong(8, id);
             int rowCount = statement.executeUpdate();
@@ -148,7 +160,7 @@ public class TaskDaoImpl implements TaskDao {
                 productOptional = Optional.of(task);
             }
         } catch (SQLException e) {
-            logger.warning("DAO: sql exception occurred" +  e);
+            logger.warning("DAO: sql exception occurred" + e);
             logger.warning("DAO: sql: {}" + FIND_TASK_BY_ID);
             throw new DaoException(e);
         } catch (EntityExtractionFailedException e) {
@@ -157,25 +169,43 @@ public class TaskDaoImpl implements TaskDao {
         return productOptional;
     }
 
+    @Override
+    public List<Task> findAllTaskInProject(Long id) throws DaoException {
+        try (Connection connection = connectionBd.gerConnection();
+             PreparedStatement statement = connection.prepareStatement(FIND_ALL_TASK_IN_PROJECT)) {
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            ResultSetExtractor<Task> extractor = TaskDaoImpl::extractTask;
+            return extractor.extractAll(resultSet);
+        } catch (SQLException e) {
+            logger.warning("DAO: sql exception occurred" + e);
+            logger.warning("DAO: sql: {}" + FIND_ALL_TASK_IN_PROJECT);
+            throw new DaoException(e);
+        } catch (EntityExtractionFailedException e) {
+            logger.warning("DAO:could not extract entity" + e);
+        }
+        return Collections.emptyList();
+    }
+
     private static Task extractTask(ResultSet resultSet) throws EntityExtractionFailedException {
         try {
             return new Task(
                     resultSet.getLong("ID_TASK"),
                     new StatusTask(
                             resultSet.getLong("ID_STATUS"),
-                            resultSet.getString("NAME_STATUS")),
-                    resultSet.getString("NAME_TASK"),
+                            resultSet.getString("NAME_STATUS").trim()),
+                    resultSet.getString("NAME_TASK").trim(),
                     new Project(resultSet.getLong("ID_PROJECT"),
-                            resultSet.getString("NAME_PROJECT"),
-                            resultSet.getString("DESCRIPTION")),
-                    resultSet.getString("NAME_JOB"),
+                            resultSet.getString("NAME_PROJECT").trim(),
+                            resultSet.getString("DESCRIPTION").trim()),
+                    resultSet.getLong("NAME_JOB"),
                     resultSet.getDate("START_DATE"),
                     resultSet.getDate("FINISH_DATE"),
                     new Employee(resultSet.getLong("ID_EMPLOYEE"),
-                            resultSet.getString("FIRTS_NAME"),
-                            resultSet.getString("LAST_NAME"),
-                            resultSet.getString("PATRONYMIC"),
-                            resultSet.getString("POSITION")));
+                            resultSet.getString("FIRTS_NAME").trim(),
+                            resultSet.getString("LAST_NAME").trim(),
+                            resultSet.getString("PATRONYMIC").trim(),
+                            resultSet.getString("POSITION").trim()));
         } catch (SQLException e) {
             throw new EntityExtractionFailedException();
         }

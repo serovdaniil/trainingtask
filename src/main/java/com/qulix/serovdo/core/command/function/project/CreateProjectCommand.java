@@ -22,7 +22,7 @@ public class CreateProjectCommand implements Command {
     private static final String PROJECT_ATTRIBUTE_NAME = "projects";
     private static final String PARAM_NAME = "name";
     private static final String PARAM_DESCRIPTION = "description";
-    private static final String PROJECT_PAGE = "page.project";
+    private static final String PROJECT_PAGE = "/controller?command=project_page";
 
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
@@ -47,7 +47,7 @@ public class CreateProjectCommand implements Command {
         } catch (ServiceException | ValidationException e) {
             logger.warning("Create project:" + e);
         }
-        return requestFactory.createForwardResponse(propertyContext.get(PROJECT_PAGE));
+        return requestFactory.createRedirectResponse(PROJECT_PAGE);
     }
 
     public static CreateProjectCommand getInstance() {

@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class StatusTask implements Entity{
     private final Long id;
-    private final String nameTask;
+    private final String nameStatus;
 
     public StatusTask(Long id, String nameTask) {
         this.id = id;
-        this.nameTask = nameTask;
+        this.nameStatus = nameTask;
     }
 
     @Override
@@ -16,8 +16,8 @@ public class StatusTask implements Entity{
         return id;
     }
 
-    public String getNameTask() {
-        return nameTask;
+    public String getNameStatus() {
+        return nameStatus;
     }
 
     @Override
@@ -25,19 +25,19 @@ public class StatusTask implements Entity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StatusTask that = (StatusTask) o;
-        return Objects.equals(id, that.id) && Objects.equals(nameTask, that.nameTask);
+        return Objects.equals(id, that.id) && Objects.equals(nameStatus, that.nameStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nameTask);
+        return Objects.hash(id, nameStatus);
     }
 
     @Override
     public String toString() {
         return "StatusTask{" +
                 "idTask=" + id +
-                ", nameTask='" + nameTask + '\'' +
+                ", nameTask='" + nameStatus + '\'' +
                 '}';
     }
 }

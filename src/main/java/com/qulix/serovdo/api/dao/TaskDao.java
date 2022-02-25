@@ -20,5 +20,7 @@ public interface TaskDao {
 
     List<Task> findAll() throws DaoException;
 
+    List<Task> findAllTaskInProject(Long id) throws DaoException;
+
     Optional<Task> findById(Long id) throws DaoException;
 }

@@ -8,13 +8,13 @@ public class Task implements Entity {
     private final StatusTask status;
     private final String name;
     private final Project project;
-    private final String job;
+    private final Long job;
     private final Date startDate;
     private final java.sql.Date finishDate;
     private final Employee Employee;
 
     public Task(Long id, StatusTask status, String name, Project project,
-                String job, Date startDate, Date finishDate,
+                Long job, Date startDate, Date finishDate,
                 com.qulix.serovdo.api.entity.Employee employee) {
         this.id = id;
         this.status = status;
@@ -43,7 +43,7 @@ public class Task implements Entity {
         return project;
     }
 
-    public String getJob() {
+    public Long getJob() {
         return job;
     }
 
@@ -64,7 +64,10 @@ public class Task implements Entity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(id, task.id) && Objects.equals(status, task.status) && Objects.equals(name, task.name) && Objects.equals(project, task.project) && Objects.equals(job, task.job) && Objects.equals(startDate, task.startDate) && Objects.equals(finishDate, task.finishDate) && Objects.equals(Employee, task.Employee);
+        return Objects.equals(id, task.id) && Objects.equals(status, task.status)
+                && Objects.equals(name, task.name) && Objects.equals(project, task.project)
+                && Objects.equals(job, task.job) && Objects.equals(startDate, task.startDate)
+                && Objects.equals(finishDate, task.finishDate) && Objects.equals(Employee, task.Employee);
     }
 
     @Override
@@ -79,7 +82,7 @@ public class Task implements Entity {
                 ", status=" + status +
                 ", name='" + name + '\'' +
                 ", project=" + project +
-                ", job='" + job + '\'' +
+                ", job=" + job +
                 ", startDate=" + startDate +
                 ", finishDate=" + finishDate +
                 ", Employee=" + Employee +

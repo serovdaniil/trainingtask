@@ -5,6 +5,7 @@ import com.qulix.serovdo.api.entity.Project;
 import com.qulix.serovdo.api.entity.StatusTask;
 import com.qulix.serovdo.api.entity.Task;
 import com.qulix.serovdo.api.service.TaskService;
+import com.qulix.serovdo.core.connection.ConnectionDb;
 import com.qulix.serovdo.core.dao.TaskDaoImpl;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.ServiceException;
@@ -33,7 +34,7 @@ public class TaskServiceImpl implements TaskService {
             throws ValidationException, ServiceException {
         try {
             if (!validator.isNumberValidator(status.getId())
-                    || !validator.isStringValidator(status.getNameTask())
+                    || !validator.isStringValidator(status.getNameStatus())
                     || !validator.isStringValidator(name)
                     || !validator.isStringValidator(nameProject.getName())
                     || !validator.isStringValidator(job)
@@ -58,7 +59,7 @@ public class TaskServiceImpl implements TaskService {
         try {
             if (!validator.isNumberValidator(id)
                     || !validator.isNumberValidator(status.getId())
-                    || !validator.isStringValidator(status.getNameTask())
+                    || !validator.isStringValidator(status.getNameStatus())
                     || !validator.isStringValidator(name)
                     || !validator.isStringValidator(nameProject.getName())
                     || !validator.isStringValidator(job)
@@ -109,5 +110,26 @@ public class TaskServiceImpl implements TaskService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public List<Task> findAllTaskInProject(Long id) throws ValidationException, ServiceException {
+        try {
+            if (!validator.isNumberValidator(id)) {
+                logger.warning("Service: The entered data is not correct!");
+                throw new ValidationException("Service: The entered data is not correct!");
+            }
+            return taskDao.findAllTaskInProject(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public static TaskServiceImpl getInstance() {
+        return TaskServiceImpl.Holder.INSTANCE;
+    }
+
+    private static class Holder {
+        public static final TaskServiceImpl INSTANCE = new TaskServiceImpl(new TaskDaoImpl(new ConnectionDb()));
     }
 }
