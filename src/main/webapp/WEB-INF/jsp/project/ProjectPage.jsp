@@ -10,32 +10,6 @@
     <%@include file="/WEB-INF/css/dataListStyle.css"%>
 </style>
 <%@include file="/WEB-INF/jsp/common/Header.jsp" %>
-<%--
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Описание</th>
-        <th><a href="${pageContext.request.contextPath}/controller?command=project_page">Создать проект</a></th>
-    </tr>
-    <c:forEach var="project" items="${requestScope.projects}">
-        <form name="conferenc-form" action="${pageContext.request.contextPath}/controller?command=remove_project"
-              method="post">
-            <tr>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${project.id}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${project.name}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${project.name}"/></td>
-                <td>
-                    <button type="submit" class="button">Удалить</button>
-                </td>
-            </tr>
-        </form>
-    </c:forEach>
-</table>
---%>
 <a class="buttonMore" href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать проект</a>
 <ul class="list3a">
     <c:forEach var="project" items="${requestScope.projects}">

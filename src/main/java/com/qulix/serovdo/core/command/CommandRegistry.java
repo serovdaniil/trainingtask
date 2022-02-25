@@ -4,17 +4,19 @@ import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.core.command.function.project.CreateProjectCommand;
 import com.qulix.serovdo.core.command.function.project.RemoveProjectCommand;
 import com.qulix.serovdo.core.command.function.project.UpdateProjectCommand;
+import com.qulix.serovdo.core.command.page.employee.ShowEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowCreateProjectPageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowProjectPageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowUpdateProjectPageCommand;
 
 public enum CommandRegistry {
-    PROJECT_PAGE(ShowProjectPageCommand.getInstance(), "main_page"),
+    PROJECT_PAGE(ShowProjectPageCommand.getInstance(), "project_page"),
     REMOVE_PROJECT(RemoveProjectCommand.getInstance(), "remove_project"),
     UPDATE_PROJECT(UpdateProjectCommand.getInstance(), "update_project"),
     SHOW_UPDATE_PROJECT_PAGE(ShowUpdateProjectPageCommand.getInstance(), "show_update_project_page"),
     CREATE_PROJECT(CreateProjectCommand.getInstance(), "create_project"),
     SHOW_CREATE_PROJECT_PAGE(ShowCreateProjectPageCommand.getInstance(), "show_create_project_page"),
+    EMPLOYEE_PAGE(ShowEmployeePageCommand.getInstance(), "employee_page"),
     DEFAULT(ShowProjectPageCommand.getInstance(), "");
 
 

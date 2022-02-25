@@ -4,7 +4,8 @@ public enum PagePaths {
     INDEX("/"),
     CREATEPROJECT("/WEB-INF/jsp/project/CreateProject.jsp"),
     UPDATEPROJECT("/WEB-INF/jsp/project/UpdateProject.jsp"),
-    PROJECT("/WEB-INF/jsp/project/ProjectPage.jsp");
+    PROJECT("/WEB-INF/jsp/project/ProjectPage.jsp"),
+    EMPLOYEE("/WEB-INF/jsp/employee/EmployeePage.jsp");
 
     private final String path;
 

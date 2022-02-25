@@ -2,7 +2,9 @@ package com.qulix.serovdo.core.service;
 
 import com.qulix.serovdo.api.entity.Employee;
 import com.qulix.serovdo.api.service.EmployeeService;
+import com.qulix.serovdo.core.connection.ConnectionDb;
 import com.qulix.serovdo.core.dao.EmployeeDaoImpl;
+import com.qulix.serovdo.core.dao.ProjectDaoImpl;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.ServiceException;
 import com.qulix.serovdo.core.exception.ValidationException;
@@ -90,6 +92,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+    public static EmployeeServiceImpl getInstance() {
+        return EmployeeServiceImpl.Holder.INSTANCE;
+    }
+
+    private static class Holder {
+        public static final EmployeeServiceImpl INSTANCE = new EmployeeServiceImpl(new EmployeeDaoImpl(new ConnectionDb()));
     }
 }
 
