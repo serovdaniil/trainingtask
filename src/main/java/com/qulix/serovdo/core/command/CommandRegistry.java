@@ -7,6 +7,7 @@ import com.qulix.serovdo.core.command.function.employee.UpdateEmployeeCommand;
 import com.qulix.serovdo.core.command.function.project.CreateProjectCommand;
 import com.qulix.serovdo.core.command.function.project.RemoveProjectCommand;
 import com.qulix.serovdo.core.command.function.project.UpdateProjectCommand;
+import com.qulix.serovdo.core.command.function.task.RemoveTaskCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowCreateEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowUpdateEmployeePageCommand;
@@ -29,6 +30,7 @@ public enum CommandRegistry {
     SHOW_UPDATE_EMPLOYEE_PAGE(ShowUpdateEmployeePageCommand.getInstance(), "show_update_employee_page"),
     UPDATE_EMPLOYEE(UpdateEmployeeCommand.getInstance(), "update_employee"),
     TASK_PAGE(ShowTaskPageCommand.getInstance(), "task_page"),
+    REMOVE_TASK(RemoveTaskCommand.getInstance(), "remove_task"),
     DEFAULT(ShowProjectPageCommand.getInstance(), "");
 
 

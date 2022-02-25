@@ -22,7 +22,7 @@
             сотрудника</a></th>
     </tr>
     <c:forEach var="employee" items="${requestScope.employees}">
-        <form name="employee" action="${pageContext.request.contextPath}/controller?command=remove_employee"
+        <form name="employee" action="${pageContext.request.contextPath}/controller?command=remove_employee&id=${employee.id}"
               method="post">
             <tr>
                 <td><input class="container" type="text" name="firstName" readonly

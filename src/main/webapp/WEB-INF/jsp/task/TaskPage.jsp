@@ -24,20 +24,20 @@
             задачу</a></th>
     </tr>
     <c:forEach var="task" items="${requestScope.tasks}">
-        <form name="task" action="${pageContext.request.contextPath}/controller?command=remove_project"
+        <form name="task" action="${pageContext.request.contextPath}/controller?command=remove_task&id=${task.id}"
               method="post">
             <tr>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input class="container" type="text" name="nameStatus" readonly
                            value="${task.status.nameStatus}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input class="container" type="text" name="name" readonly
                            value="${task.name}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input class="container" type="text" name="job" readonly
                            value="${task.job}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input class="container" type="text" name="startDate" readonly
                            value="${task.startDate}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input class="container" type="text" name="finishDate" readonly
                            value="${task.finishDate}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input class="container" type="text" name="personalName" readonly
                            value="${task.employee.lastName} ${task.employee.firstName} ${task.employee.patronymic}"/></td>
                 <td>
                     <a class="create"

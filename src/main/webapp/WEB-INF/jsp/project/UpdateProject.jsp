@@ -46,7 +46,7 @@
               method="post">
             <tr>
                 <td><input class="container" type="text" name="id" readonly
-                           value="${task.status.nameStatus}"/></td>
+                           value="${task.status.nameStatus}" /></td>
                 <td><input class="container" type="text" name="id" readonly
                            value="${task.name}"/></td>
                 <td><input class="container" type="text" name="id" readonly
