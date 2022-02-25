@@ -43,7 +43,6 @@ public class ShowUpdateProjectPageCommand implements Command {
         try {
             final Optional<Project> projectOptional = serviceProject.findById(id);
             final List<Task> tasks= serviceTask.findAllTaskInProject(id);
-            System.out.println(tasks);
             if (projectOptional.isPresent()) {
                 project = projectOptional.get();
             }

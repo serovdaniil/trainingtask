@@ -30,6 +30,8 @@
     <input id="employeePosition-input" class="container" type="text" name="position"
            pattern="^.{1,40}$" value="${requestScope.employee.position}"/>
     <button type="submit" class="button">Обновить сотрудника</button>
+    <a href="${pageContext.request.contextPath}/controller?command=show_update_employee_page&id=${requestScope.employee.id}">
+        Отменить</a>
 </form>
 </body>
 </html>

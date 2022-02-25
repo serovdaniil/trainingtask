@@ -9,7 +9,7 @@
 <ul id="menu">
     <li><a href="${pageContext.request.contextPath}/controller?command=project_page">Проекты</a></li>
     <li><a href="${pageContext.request.contextPath}/controller?command=employee_page">Сотрудники</a></li>
-    <li><a href="${pageContext.request.contextPath}/controller?command=show_conferences_with_pagination&page=1">Задачи</a></li>
+    <li><a href="${pageContext.request.contextPath}/controller?command=task_page">Задачи</a></li>
 </ul>
 </body>
 </html>

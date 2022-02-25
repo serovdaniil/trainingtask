@@ -1,7 +1,6 @@
 /*format text*/
 body {
     font-family: "Times New Roman";
-
 }
 
 /* Bordered form */
@@ -11,7 +10,7 @@ form {
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+input[type=text] {
     width: auto;
     padding: 12px 20px;
     margin: 8px 0;

@@ -13,7 +13,6 @@
 <br>
 <table>
     <tr>
-        <th>ID</th>
         <th>Название</th>
         <th>Описание</th>
         <th><a class="create"
@@ -24,8 +23,6 @@
         <form name="project" action="${pageContext.request.contextPath}/controller?command=remove_project"
               method="post">
             <tr>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${project.id}"/></td>
                 <td><input class="container" type="text" name="name" readonly
                            value="${project.name}"/></td>
                 <td><input class="container" type="text" name="description" readonly

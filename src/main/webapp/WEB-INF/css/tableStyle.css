@@ -43,23 +43,7 @@ tr:last-child td:last-child {
 tr td:last-child {
     border-right: none;
 }
-button {
-    background-color: #f44336;
-    /*#4CAF50 - зеленый цвет*/
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 90%;
-    border-radius: 30px;
-    font-weight: bold;
-}
 
-/* Add a hover effect for buttons */
-button:hover {
-    opacity: 0.8;
-}
 .create {
     width: 80%;
     padding: 10px 5px;
@@ -79,7 +63,7 @@ form {
     border: 2px solid #4CAF50;
     margin-top: 20px;
 }
-input[type=text], input[type=password] {
+input[type=text] {
     width: 95%;
     padding: 12px 20px;
     margin: 2%;

@@ -13,7 +13,6 @@
 <br>
 <table>
     <tr>
-        <th>ID</th>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>Отчество</th>
@@ -26,8 +25,6 @@
         <form name="employee" action="${pageContext.request.contextPath}/controller?command=remove_employee"
               method="post">
             <tr>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${employee.id}"/></td>
                 <td><input class="container" type="text" name="firstName" readonly
                            value="${employee.firstName}"/></td>
                 <td><input class="container" type="text" name="lastName" readonly
