@@ -8,7 +8,8 @@ public enum PagePaths {
     EMPLOYEE("/WEB-INF/jsp/employee/EmployeePage.jsp"),
     CREATEEMPLOYEE("/WEB-INF/jsp/employee/CreateEmployee.jsp"),
     UPDATEEMPLOYEE("/WEB-INF/jsp/employee/UpdateEmployee.jsp"),
-    TASK("/WEB-INF/jsp/task/TaskPage.jsp");
+    TASK("/WEB-INF/jsp/task/TaskPage.jsp"),
+    CREATETASK("/WEB-INF/jsp/task/CreateTask.jsp");
 
     private final String path;
 

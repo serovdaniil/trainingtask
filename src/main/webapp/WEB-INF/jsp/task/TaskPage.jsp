@@ -20,7 +20,7 @@
         <th>Дата окончания</th>
         <th>Исполнитель</th>
         <th><a class="create"
-               href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать
+               href="${pageContext.request.contextPath}/controller?command=show_create_task_page">Создать
             задачу</a></th>
     </tr>
     <c:forEach var="task" items="${requestScope.tasks}">

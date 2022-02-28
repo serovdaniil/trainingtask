@@ -16,10 +16,10 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 public class  EmployeeDaoImpl implements EmployeeDao {
-    private static final String CREATE_EMPLOYEE = "INSERT INTO EMPLOYEE(FIRTS_NAME, LAST_NAME, PATRONYMIC, POSITION) " +
+    private static final String CREATE_EMPLOYEE = "INSERT INTO EMPLOYEE(FIRST_NAME, LAST_NAME, PATRONYMIC, POSITION) " +
             "values (?,?,?,?)";
     private static final String REMOVE_EMPLOYEE = "DELETE FROM EMPLOYEE WHERE ID_EMPLOYEE = ?";
-    private static final String UPDATE_EMPLOYEE = "UPDATE employee SET FIRTS_NAME=?, " +
+    private static final String UPDATE_EMPLOYEE = "UPDATE employee SET FIRST_NAME=?, " +
             "last_name=?, patronymic=?, position=? WHERE ID_EMPLOYEE=?";
     private static final String FIND_ALL_EMPLOYEE = "SELECT * FROM EMPLOYEE";
     private static final String FIND_EMPLOYEE_BY_ID = "SELECT * FROM EMPLOYEE WHERE ID_EMPLOYEE=?";
@@ -150,7 +150,7 @@ public class  EmployeeDaoImpl implements EmployeeDao {
         try {
             return new Employee(
                     resultSet.getLong("ID_EMPLOYEE"),
-                    resultSet.getString("FIRTS_NAME").trim(),
+                    resultSet.getString("FIRST_NAME").trim(),
                     resultSet.getString("LAST_NAME").trim(),
                     resultSet.getString("PATRONYMIC").trim(),
                     resultSet.getString("POSITION").trim());

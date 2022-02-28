@@ -47,14 +47,14 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     @Override
-    public boolean create(StatusTask status, String name, Project nameProject,
-                          String job, String startDate, String finishDate, Employee employee) throws DaoException {
+    public boolean create(Long idStatus, String name, Long idProject,
+                          Long job, String startDate, String finishDate, Long idEmployee) throws DaoException {
         boolean result = false;
         logger.info("DAO: Task creation started.");
         try (Connection connection = connectionBd.gerConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_TASK)) {
-            extracted(status, name, nameProject, job, startDate,
-                    finishDate, employee, statement);
+            extracted(idStatus, name, idProject, job, startDate,
+                    finishDate, idEmployee, statement);
             int rowCount = statement.executeUpdate();
             if (rowCount != 0) {
                 result = true;
@@ -71,27 +71,27 @@ public class TaskDaoImpl implements TaskDao {
         return result;
     }
 
-    private void extracted(StatusTask status, String name, Project nameProject, String job,
-                           String startDate, String finishDate, Employee employee,
+    private void extracted(Long idStatus, String name, Long idProject, Long job,
+                           String startDate, String finishDate, Long idEmployee,
                            PreparedStatement statement) throws SQLException {
-        statement.setLong(1, status.getId());
+        statement.setLong(1, idStatus);
         statement.setString(2, name);
-        statement.setLong(3, nameProject.getId());
-        statement.setString(4, job);
+        statement.setLong(3, idProject);
+        statement.setLong(4, job);
         statement.setDate(5, Date.valueOf(startDate));
         statement.setDate(6, Date.valueOf(finishDate));
-        statement.setLong(7, employee.getId());
+        statement.setLong(7, idEmployee);
     }
 
     @Override
-    public boolean updateEntity(Long id, StatusTask status, String name, Project nameProject,
-                                String job, String startDate, String finishDate, Employee employee) throws DaoException {
+    public boolean updateEntity(Long id, Long idStatus, String name, Long idProject,
+                                Long job, String startDate, String finishDate, Long idEmployee) throws DaoException {
         boolean result = false;
         logger.info("DAO: Task update started.");
         try (Connection connection = connectionBd.gerConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_TASK)) {
-            extracted(status, name, nameProject, job, startDate,
-                    finishDate, employee, statement);
+            extracted(idStatus, name, idProject, job, startDate,
+                    finishDate, idEmployee, statement);
             statement.setLong(8, id);
             int rowCount = statement.executeUpdate();
             if (rowCount != 0) {
@@ -202,7 +202,7 @@ public class TaskDaoImpl implements TaskDao {
                     resultSet.getDate("START_DATE"),
                     resultSet.getDate("FINISH_DATE"),
                     new Employee(resultSet.getLong("ID_EMPLOYEE"),
-                            resultSet.getString("FIRTS_NAME").trim(),
+                            resultSet.getString("FIRST_NAME").trim(),
                             resultSet.getString("LAST_NAME").trim(),
                             resultSet.getString("PATRONYMIC").trim(),
                             resultSet.getString("POSITION").trim()));

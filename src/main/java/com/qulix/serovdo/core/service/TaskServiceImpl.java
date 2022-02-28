@@ -1,8 +1,5 @@
 package com.qulix.serovdo.core.service;
 
-import com.qulix.serovdo.api.entity.Employee;
-import com.qulix.serovdo.api.entity.Project;
-import com.qulix.serovdo.api.entity.StatusTask;
 import com.qulix.serovdo.api.entity.Task;
 import com.qulix.serovdo.api.service.TaskService;
 import com.qulix.serovdo.core.connection.ConnectionDb;
@@ -29,49 +26,41 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public boolean create(StatusTask status, String name, Project nameProject,
-                          String job, String startDate, String finishDate, Employee employee)
+    public boolean create(Long idStatus, String name, Long idProject,
+                          Long job, String startDate, String finishDate, Long idEmployee)
             throws ValidationException, ServiceException {
         try {
-            if (!validator.isNumberValidator(status.getId())
-                    || !validator.isStringValidator(status.getNameStatus())
+            if (!validator.isNumberValidator(idStatus)
                     || !validator.isStringValidator(name)
-                    || !validator.isStringValidator(nameProject.getName())
-                    || !validator.isStringValidator(job)
-                    || !validator.isNumberValidator(employee.getId())
-                    || !validator.isStringValidator(employee.getFirstName())
-                    || !validator.isStringValidator(employee.getLastName())
-                    || !validator.isStringValidator(employee.getPatronymic())
-                    || !validator.isStringValidator(employee.getPosition())) {
+                    || !validator.isNumberValidator(idProject)
+                    || !validator.isNumberValidator(job)
+                    || !validator.isDateValidator(startDate, finishDate)
+                    || !validator.isNumberValidator(idEmployee)) {
                 logger.warning("Service: The entered data is not correct!");
                 throw new ValidationException("Service: The entered data is not correct!");
             }
-            return taskDao.create(status, name, nameProject, job, startDate, finishDate, employee);
+            return taskDao.create(idStatus, name, idProject, job, startDate, finishDate, idEmployee);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public boolean updateEntity(Long id, StatusTask status, String name, Project nameProject,
-                                String job, String startDate, String finishDate, Employee employee)
+    public boolean updateEntity(Long id, Long idStatus, String name, Long idProject,
+                                Long job, String startDate, String finishDate, Long idEmployee)
             throws ValidationException, ServiceException {
         try {
             if (!validator.isNumberValidator(id)
-                    || !validator.isNumberValidator(status.getId())
-                    || !validator.isStringValidator(status.getNameStatus())
+                    || !validator.isNumberValidator(idStatus)
                     || !validator.isStringValidator(name)
-                    || !validator.isStringValidator(nameProject.getName())
-                    || !validator.isStringValidator(job)
-                    || !validator.isNumberValidator(employee.getId())
-                    || !validator.isStringValidator(employee.getFirstName())
-                    || !validator.isStringValidator(employee.getLastName())
-                    || !validator.isStringValidator(employee.getPatronymic())
-                    || !validator.isStringValidator(employee.getPosition())) {
+                    || !validator.isNumberValidator(idProject)
+                    || !validator.isNumberValidator(job)
+                    || !validator.isNumberValidator(idEmployee)
+                    || !validator.isDateValidator(startDate, finishDate)) {
                 logger.warning("Service: The entered data is not correct!");
                 throw new ValidationException("Service: The entered data is not correct!");
             }
-            return taskDao.updateEntity(id, status, name, nameProject, job, startDate, finishDate, employee);
+            return taskDao.updateEntity(id, idStatus, name, idProject, job, startDate, finishDate, idEmployee);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
