@@ -15,7 +15,7 @@ public class ConnectionDb {
         } catch (Exception e) {
             System.err.println("ERROR: failed to load HSQLDB JDBC driver.");
         }
-        Connection connection = DriverManager.getConnection(DB_URL, DB_NAME, DB_PASSWORD);
-        return connection;
+        return DriverManager.getConnection(DB_URL, DB_NAME, DB_PASSWORD);
+
     }
 }

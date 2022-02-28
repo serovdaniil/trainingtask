@@ -12,60 +12,47 @@
     <%@include file="/WEB-INF/css/tableStyle.css"%>
 </style>
 <%@include file="/WEB-INF/jsp/common/Header.jsp" %>
-<h2>Изменение проекта</h2>
-<form name="project-form" action="${pageContext.request.contextPath}/controller?command=update_project"
+<h2>Изменение задачи</h2>
+<form name="project-form"
+      action="${pageContext.request.contextPath}/controller?command=update_task"
       method="post">
-    <label for="projectId-input">ID:</label>
-    <input id="projectId-input" class="container" type="text" name="id" readonly
-           value="${requestScope.project.id}"/>
-    <label for="projectName-input">Название:</label>
-    <input id="projectName-input" class="container" type="text" name="name"
-           pattern="^.{1,40}$" value="${requestScope.project.name}"/>
-    <label for="projectDescription-input">Описание:</label>
-    <input id="projectDescription-input" class="container" type="text" name="description"
-           pattern="^.{1,40}$" value="${requestScope.project.description}"/>
-    <button type="submit" class="button">Изменить</button>
-    <a href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${requestScope.project.id}">
+    <input type="hidden" name="id" value="${requestScope.task.id}">
+    <input type="hidden" name="idProject" value="${requestScope.task.project.id}">
+    <label for="taskName-input">Название задачи</label>
+    <input id="taskName-input" class="container" type="text" name="name"
+           value="${requestScope.task.name}"/>
+    <label for="projectName-input">Название проекта</label>
+    <input id="projectName-input" class="container" type="text" name="nameProject"
+           value="${requestScope.task.project.nameProject}" readonly/>
+    <label for="taskJob-input">Сколько требуется времени на выполнение</label>
+    <input id="taskJob-input" class="container" type="text" name="job"
+           value="${requestScope.task.job}"/>
+    <label for="taskStartDate-input">Дата начала</label>
+    <input id="taskStartDate-input" class="container" type="text" name="startDate"
+           value="${requestScope.task.startDate}"/>
+    <label for="taskFinishDate-input">Дата окончания</label>
+    <input id="taskFinishDate-input" class="container" type="text" name="finishDate"
+           value="${requestScope.task.finishDate}"/>
+    <label for="taskStatus-input">Статус задачи</label>
+    <select id="taskStatus-input" name="nameStatus">
+        <%-- <option>На данный момент - ${requestScope.task.status.nameStatus}</option>--%>
+        <option value="1"> Не начата</option>
+        <option value="2"> В процессе</option>
+        <option value="3"> Завершена</option>
+        <option value="4"> Отложена</option>
+    </select>
+    <label for="taskPersonalName-input">Исполнитель</label>
+    <select id="taskPersonalName-input" name="idEmployee">
+        <%--   <option>На данный момент -
+               ${requestScope.task.employee.lastName} ${requestScope.task.employee.firstName}
+               ${requestScope.task.employee.patronymic}</option>--%>
+        <c:forEach var="employee" items="${requestScope.employees}">
+            <option value="${employee.id}">${employee.lastName} ${employee.firstName} ${employee.patronymic}</option>
+        </c:forEach>
+    </select>
+    <button type="submit" class="button">Изменить задачу</button>
+    <a href="${pageContext.request.contextPath}/controller?command=task_page">
         Отменить</a>
 </form>
-<br>
-<table>
-    <tr>
-        <th>Статус</th>
-        <th>Наименование</th>
-        <th>Работа</th>
-        <th>Дата начала</th>
-        <th>Дата окончания</th>
-        <th>Исполнитель</th>
-        <th><a class="create"
-               href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать
-            проект</a></th>
-    </tr>
-    <c:forEach var="task" items="${requestScope.tasks}">
-        <form name="task" action="${pageContext.request.contextPath}/controller?command=remove_project"
-              method="post">
-            <tr>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.status.nameStatus}" /></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.name}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.job}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.startDate}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.finishDate}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.employee.lastName} ${task.employee.firstName} ${task.employee.patronymic}"/></td>
-                <td>
-                    <a class="create"
-                       href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${task.id}">
-                        Изменить проект</a>
-                    <button type="submit" class="create">Удалить проект</button>
-                </td>
-            </tr>
-        </form>
-    </c:forEach>
-</table>
 </body>
 </html>

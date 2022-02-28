@@ -12,62 +12,54 @@ import com.qulix.serovdo.core.service.TaskServiceImpl;
 import java.util.List;
 import java.util.logging.Logger;
 
-/**
- * This page displays categories
- *
- * @author Daniil Serov
- */
-public class CreateTaskCommand implements Command {
-    private static final String TASK_ATTRIBUTE_NAME = "projects";
+public class UpdateTaskCommand implements Command {
+    private static final String TASK_ATTRIBUTE_NAME = "tasks";
     private static final String PARAM_NAME = "name";
-    private static final String PARAM_ID_PROJECT = "nameProject";
+    private static final String PARAM_PROJECT_ID = "idProject";
     private static final String PARAM_JOB = "job";
     private static final String PARAM_START_DATE = "startDate";
     private static final String PARAM_FINISH_DATE = "finishDate";
-    private static final String PARAM_STATUS = "nameStatus";
+    private static final String PARAM_NAME_STATUS = "nameStatus";
     private static final String PARAM_ID_EMPLOYEE = "idEmployee";
+    private static final String PARAM_ID = "id";
     private static final String TASK_PAGE = "/controller?command=task_page";
-
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
     private final TaskServiceImpl service;
     private final RequestFactory requestFactory;
 
-    CreateTaskCommand() {
+    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+
+    UpdateTaskCommand() {
         this.service = TaskServiceImpl.getInstance();
         this.requestFactory = RequestFactory.getInstance();
     }
 
     @Override
     public CommandResponse execute(CommandRequest request) {
-        final String nameTask = request.getParameter(PARAM_NAME);
-        final Long idProject;
-        if (Long.parseLong(request.getParameter(PARAM_ID_PROJECT))<(long)0) {
-            idProject = Long.parseLong(request.getParameter("projectIdTask"));
-        } else {
-            idProject = Long.parseLong(request.getParameter(PARAM_ID_PROJECT));
-        }
+        final Long id = Long.parseLong(request.getParameter(PARAM_ID));
+        final String name = request.getParameter(PARAM_NAME);
+        final Long idProject = Long.parseLong(request.getParameter(PARAM_PROJECT_ID));
+        final Long idStatus = Long.parseLong(request.getParameter(PARAM_NAME_STATUS));
+        final Long idEmployee = Long.parseLong(request.getParameter(PARAM_ID_EMPLOYEE));
         final Long job = Long.parseLong(request.getParameter(PARAM_JOB));
         final String startDate = request.getParameter(PARAM_START_DATE);
         final String finishDate = request.getParameter(PARAM_FINISH_DATE);
-        final Long statusTask = Long.parseLong(request.getParameter(PARAM_STATUS));
-        final Long idEmployee = Long.parseLong(request.getParameter(PARAM_ID_EMPLOYEE));
         try {
-            boolean resultOperation = service.create(statusTask, nameTask, idProject, job, startDate, finishDate, idEmployee);
+            boolean resultOperation=service.updateEntity(id,idStatus,name,idProject,job,startDate,finishDate,idEmployee);
             final List<Task> allTask = service.findAll();
             request.addAttributeToJsp(TASK_ATTRIBUTE_NAME, allTask);
         } catch (ServiceException | ValidationException e) {
-            logger.warning("Create task:" + e);
+            logger.warning("Update task:" + e);
         }
         return requestFactory.createRedirectResponse(TASK_PAGE);
     }
 
-    public static CreateTaskCommand getInstance() {
-        return Holder.INSTANCE;
+    public static UpdateTaskCommand getInstance() {
+        return UpdateTaskCommand.Holder.INSTANCE;
     }
 
     private static class Holder {
-        public static final CreateTaskCommand INSTANCE =
-                new CreateTaskCommand();
+        public static final UpdateTaskCommand INSTANCE =
+                new UpdateTaskCommand();
     }
 }

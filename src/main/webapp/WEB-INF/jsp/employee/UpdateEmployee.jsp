@@ -14,9 +14,6 @@
 <h2>Изменение сотрудника </h2>
 <form name="question-form" action="${pageContext.request.contextPath}/controller?command=update_employee"
       method="post">
-    <label for="projectId-input">ID:</label>
-    <input id="projectId-input" class="container" type="text" name="id" readonly
-           value="${requestScope.employee.id}"/>
     <label for="employeeFirstName-input">Имя:</label>
     <input id="employeeFirstName-input" class="container" type="text" name="firstName"
            pattern="^.{1,40}$" value="${requestScope.employee.firstName}"/>
@@ -29,8 +26,9 @@
     <label for="employeePosition-input">Должность:</label>
     <input id="employeePosition-input" class="container" type="text" name="position"
            pattern="^.{1,40}$" value="${requestScope.employee.position}"/>
+    <input type="hidden" name="id" value="${requestScope.employee.id}">
     <button type="submit" class="button">Обновить сотрудника</button>
-    <a href="${pageContext.request.contextPath}/controller?command=show_update_employee_page&id=${requestScope.employee.id}">
+    <a href="${pageContext.request.contextPath}/controller?command=employee_page">
         Отменить</a>
 </form>
 </body>

@@ -2,7 +2,6 @@ package com.qulix.serovdo.core.dao;
 
 import com.qulix.serovdo.api.dao.ProjectDao;
 import com.qulix.serovdo.api.entity.Project;
-import com.qulix.serovdo.api.entity.Task;
 import com.qulix.serovdo.core.connection.ConnectionDb;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.EntityExtractionFailedException;

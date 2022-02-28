@@ -6,11 +6,9 @@ import com.qulix.serovdo.api.command.CommandResponse;
 import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
 import com.qulix.serovdo.api.entity.Employee;
-import com.qulix.serovdo.api.entity.Project;
 import com.qulix.serovdo.core.exception.ServiceException;
 import com.qulix.serovdo.core.exception.ValidationException;
 import com.qulix.serovdo.core.service.EmployeeServiceImpl;
-import com.qulix.serovdo.core.service.ProjectServiceImpl;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -27,17 +25,16 @@ public class CreateEmployeeCommand implements Command {
     private static final String PARAM_PATRONYMIC = "patronymic";
     private static final String PARAM_POSITION = "position";
     private static final String EMPLOYEE_PAGE = "/controller?command=employee_page";
+    private static final String CREATE_EMPLOYEE_PAGE = "page.createEmployee";
 
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
     private final EmployeeServiceImpl service;
     private final RequestFactory requestFactory;
-    private final PropertyContext propertyContext;
 
     CreateEmployeeCommand() {
         this.service = EmployeeServiceImpl.getInstance();
         this.requestFactory = RequestFactory.getInstance();
-        this.propertyContext = PropertyContext.instance();
     }
 
     @Override

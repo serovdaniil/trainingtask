@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Project implements Entity{
     private final Long id;
-    private final String name;
+    private final String nameProject;
     private final String description;
 
     public Project(Long id, String name, String description) {
         this.id = id;
-        this.name = name;
+        this.nameProject = name;
         this.description = description;
     }
 
@@ -18,8 +18,8 @@ public class Project implements Entity{
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameProject() {
+        return nameProject;
     }
 
     public String getDescription() {
@@ -31,20 +31,20 @@ public class Project implements Entity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return Objects.equals(id, project.id) && Objects.equals(name, project.name)
+        return Objects.equals(id, project.id) && Objects.equals(nameProject, project.nameProject)
                 && Objects.equals(description, project.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description);
+        return Objects.hash(id, nameProject, description);
     }
 
     @Override
     public String toString() {
         return "Project{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + nameProject + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

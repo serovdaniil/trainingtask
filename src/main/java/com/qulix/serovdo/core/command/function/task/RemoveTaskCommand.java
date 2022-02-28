@@ -3,7 +3,6 @@ package com.qulix.serovdo.core.command.function.task;
 import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
-import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
 import com.qulix.serovdo.api.entity.Task;
 import com.qulix.serovdo.core.exception.ServiceException;
@@ -27,12 +26,10 @@ public class RemoveTaskCommand implements Command {
 
     private final TaskServiceImpl service;
     private final RequestFactory requestFactory;
-    private final PropertyContext propertyContext;
 
     RemoveTaskCommand() {
         this.service = TaskServiceImpl.getInstance();
         this.requestFactory = RequestFactory.getInstance();
-        this.propertyContext = PropertyContext.instance();
     }
 
     @Override

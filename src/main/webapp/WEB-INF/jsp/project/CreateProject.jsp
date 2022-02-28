@@ -17,6 +17,8 @@
     <label for="projectDescription-input">Описание проекта</label>
     <input id="projectDescription-input" class="container" type="text" name="description" pattern="^.{1,40}$"/>
     <button type="submit" class="button">Создать проект</button>
+    <a href="${pageContext.request.contextPath}/controller?command=project_page">
+        Отменить</a>
 </form>
 </body>
 </html>

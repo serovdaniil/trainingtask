@@ -4,7 +4,6 @@ import com.qulix.serovdo.api.entity.Employee;
 import com.qulix.serovdo.api.service.EmployeeService;
 import com.qulix.serovdo.core.connection.ConnectionDb;
 import com.qulix.serovdo.core.dao.EmployeeDaoImpl;
-import com.qulix.serovdo.core.dao.ProjectDaoImpl;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.ServiceException;
 import com.qulix.serovdo.core.exception.ValidationException;

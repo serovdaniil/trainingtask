@@ -41,7 +41,7 @@ public class ShowUpdateEmployeePageCommand implements Command {
             }
             request.addAttributeToJsp(EMPLOYEE_ATTRIBUTE_NAME, employee);
         } catch (ServiceException | ValidationException e) {
-            logger.warning("Show id project:" + e);
+            logger.warning("Show id employee:" + e);
         }
         return requestFactory.createForwardResponse(propertyContext.get(EMPLOYEE_PAGE));
     }

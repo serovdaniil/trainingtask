@@ -20,12 +20,13 @@
             проект</a></th>
     </tr>
     <c:forEach var="project" items="${requestScope.projects}">
-        <form name="project" action="${pageContext.request.contextPath}/controller?command=remove_project&id=${project.id}"
+        <form name="project" action="${pageContext.request.contextPath}/controller?command=remove_project"
               method="post">
             <tr>
                 <td><label for="projectName-input"></label>
                     <input id="projectName-input" class="container" type="text" name="name" readonly
-                           value="${project.name}"/></td>
+                           value="${project.nameProject}"/>
+                    <input type="hidden" name="id" value="${project.id}"></td>
                 <td><label for="projectDescription-input"></label>
                     <input id="projectDescription-input" class="container" type="text" name="description" readonly
                            value="${project.description}"/></td>

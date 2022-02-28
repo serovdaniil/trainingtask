@@ -41,7 +41,7 @@ public class ShowTaskPageCommand implements Command {
             final List<Task> allTask = service.findAll();
             request.addAttributeToJsp(PROJECT_ATTRIBUTE_NAME, allTask);
         } catch (ServiceException e) {
-            logger.warning("Show all projects:" + e);
+            logger.warning("Show all tasks:" + e);
         }
         return requestFactory.createForwardResponse(propertyContext.get(PROJECT_PAGE));
     }

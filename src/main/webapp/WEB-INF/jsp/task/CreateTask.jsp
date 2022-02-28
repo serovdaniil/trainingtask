@@ -17,11 +17,22 @@
     <label for="taskName-input">Название задачи</label>
     <input id="taskName-input" class="container" type="text" name="name"/>
     <label for="projectName-input">Название проекта</label>
-    <select id="projectName-input" name="nameProject">
-        <c:forEach var="project" items="${requestScope.projects}">
-            <option value="${project.id}"> ${project.name} </option>
-        </c:forEach>
-    </select>
+    <c:choose>
+        <c:when test="${empty requestScope.status}">
+            <select id="projectName-input" name="nameProject">
+                <c:forEach var="project" items="${requestScope.projects}">
+                    <option value="${project.id}"> ${project.nameProject} </option>
+                </c:forEach>
+            </select>
+        </c:when>
+        <c:otherwise>
+            <input id="taskName-input" class="container" type="text"
+                   value="${requestScope.aloneProject.nameProject}"
+                   readonly/>
+            <input id="taskName-input" type="hidden" name="nameProject" value="-1">
+            <input id="taskName-input" type="hidden" name="projectIdTask" value="${requestScope.aloneProject.id}">
+        </c:otherwise>
+    </c:choose>
     <label for="taskJob-input">Сколько требуется времени на выполнение</label>
     <input id="taskJob-input" class="container" type="text" name="job"/>
     <label for="taskStartDate-input">Дата начала</label>
@@ -42,6 +53,8 @@
         </c:forEach>
     </select>
     <button type="submit" class="create">Создать задачу</button>
+    <a href="${pageContext.request.contextPath}/controller?command=task_page">
+        Отменить</a>
 </form>
 </body>
 </html>

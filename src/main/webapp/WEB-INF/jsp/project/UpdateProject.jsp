@@ -13,55 +13,57 @@
 </style>
 <%@include file="/WEB-INF/jsp/common/Header.jsp" %>
 <h2>Изменение проекта</h2>
-<form name="project-form" action="${pageContext.request.contextPath}/controller?command=update_project"
+<form name="project-form"
+      action="${pageContext.request.contextPath}/controller?command=update_project&id=${requestScope.project.id}"
       method="post">
-    <label for="projectId-input">ID:</label>
-    <input id="projectId-input" class="container" type="text" name="id" readonly
-           value="${requestScope.project.id}"/>
     <label for="projectName-input">Название:</label>
     <input id="projectName-input" class="container" type="text" name="name"
-           pattern="^.{1,40}$" value="${requestScope.project.name}"/>
+           pattern="^.{1,40}$" value="${requestScope.project.nameProject}"/>
     <label for="projectDescription-input">Описание:</label>
     <input id="projectDescription-input" class="container" type="text" name="description"
            pattern="^.{1,40}$" value="${requestScope.project.description}"/>
     <button type="submit" class="button">Изменить</button>
-    <a href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${requestScope.project.id}">
+    <a href="${pageContext.request.contextPath}/controller?command=project_page">
         Отменить</a>
 </form>
 <br>
 <table>
     <tr>
-        <th>Статус</th>
-        <th>Наименование</th>
-        <th>Работа</th>
-        <th>Дата начала</th>
-        <th>Дата окончания</th>
-        <th>Исполнитель</th>
+        <th><label for="status-input">Статус</label></th>
+        <th><label for="nameTask-input">Наименование</label></th>
+        <th><label for="job-input">Работа</label></th>
+        <th><label for="startDate-input">Дата начала</label></th>
+        <th><label for="finishDate-input">Дата окончания</label></th>
+        <th><label for="personalName-input">Исполнитель</label></th>
         <th><a class="create"
-               href="${pageContext.request.contextPath}/controller?command=show_create_project_page">Создать
-            проект</a></th>
+               href="${pageContext.request.contextPath}/controller?command=show_create_task_in_project_page">Создать
+            задачу</a>
+            <input type="hidden" name="idProjectForNewTask" value="${requestScope.project.id}">
+        </th>
     </tr>
     <c:forEach var="task" items="${requestScope.tasks}">
-        <form name="task" action="${pageContext.request.contextPath}/controller?command=remove_project"
+        <form name="task" action="${pageContext.request.contextPath}/controller?command=remove_task"
               method="post">
             <tr>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.status.nameStatus}" /></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input type="hidden" name="id" value="${task.id}">
+                    <input id="status-input" class="container" type="text" name="status" readonly
+                           value="${task.status.nameStatus}"/></td>
+                <td><input id="nameTask-input" class="container" type="text" name="id" readonly
                            value="${task.name}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input id="job-input" class="container" type="text" name="id" readonly
                            value="${task.job}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input id="startDate-input" class="container" type="text" name="id" readonly
                            value="${task.startDate}"/></td>
-                <td><input class="container" type="text" name="id" readonly
+                <td><input id="finishDate-input" class="container" type="text" name="id" readonly
                            value="${task.finishDate}"/></td>
-                <td><input class="container" type="text" name="id" readonly
-                           value="${task.employee.lastName} ${task.employee.firstName} ${task.employee.patronymic}"/></td>
+                <td><input id="personalName-input" class="container" type="text" name="id" readonly
+                           value="${task.employee.lastName} ${task.employee.firstName} ${task.employee.patronymic}"/>
+                </td>
                 <td>
                     <a class="create"
-                       href="${pageContext.request.contextPath}/controller?command=show_update_project_page&id=${task.id}">
-                        Изменить проект</a>
-                    <button type="submit" class="create">Удалить проект</button>
+                       href="${pageContext.request.contextPath}/controller?command=show_update_task_page&id=${task.id}">
+                        Изменить задачу</a>
+                    <button type="submit" class="create">Удалить задачу</button>
                 </td>
             </tr>
         </form>

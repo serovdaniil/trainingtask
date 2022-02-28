@@ -16,27 +16,27 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 public class TaskDaoImpl implements TaskDao {
-    private static final String CREATE_TASK = "INSERT INTO TASK(STATUS_TASK, NAME_TASK, NAME_PROJECT," +
+    private static final String CREATE_TASK = "INSERT INTO TASK(STATUS_TASK, NAME_TASK, PROJECT_ID," +
             " NAME_JOB,START_DATE,FINISH_DATE,EMPLOYEE_ID) values(?,?,?,?,?,?,?)";
 
     private static final String REMOVE_TASK = "DELETE FROM TASK WHERE ID_TASK=?";
 
-    private static final String UPDATE_TASK = "UPDATE TASK SET STATUS_TASK=?, NAME_TASK=?, NAME_PROJECT=?, " +
+    private static final String UPDATE_TASK = "UPDATE TASK SET STATUS_TASK=?, NAME_TASK=?, PROJECT_ID=?, " +
             "NAME_JOB=?,START_DATE=?,FINISH_DATE=?,EMPLOYEE_ID=? WHERE ID_TASK=?";
 
     private static final String FIND_ALL_TASK = "SELECT * FROM TASK JOIN PROJECT P " +
-            "on TASK.NAME_PROJECT = P.ID_PROJECT JOIN STATUS_TASK ST " +
+            "on TASK.PROJECT_ID = P.ID_PROJECT JOIN STATUS_TASK ST " +
             "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE";
 
-    private static final String FIND_TASK_BY_ID = "SELECT *FROM TASK JOIN PROJECT P " +
-            "on TASK.NAME_PROJECT = P.ID_PROJECT JOIN STATUS_TASK ST " +
+    private static final String FIND_TASK_BY_ID = "SELECT * FROM TASK JOIN PROJECT P " +
+            "on TASK.PROJECT_ID = P.ID_PROJECT JOIN STATUS_TASK ST " +
             "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E " +
             "on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE ID_TASK=?";
 
     private static final String FIND_ALL_TASK_IN_PROJECT = "SELECT * FROM TASK JOIN PROJECT P " +
-            "on TASK.NAME_PROJECT = P.ID_PROJECT JOIN STATUS_TASK ST " +
+            "on TASK.PROJECT_ID = P.ID_PROJECT JOIN STATUS_TASK ST " +
             "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E " +
-            "on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE TASK.NAME_PROJECT=?";
+            "on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE TASK.PROJECT_ID=?";
 
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
@@ -196,7 +196,7 @@ public class TaskDaoImpl implements TaskDao {
                             resultSet.getString("NAME_STATUS").trim()),
                     resultSet.getString("NAME_TASK").trim(),
                     new Project(resultSet.getLong("ID_PROJECT"),
-                            resultSet.getString("NAME_PROJECT").trim(),
+                            resultSet.getString("NAME_PROJECT"),
                             resultSet.getString("DESCRIPTION").trim()),
                     resultSet.getLong("NAME_JOB"),
                     resultSet.getDate("START_DATE"),

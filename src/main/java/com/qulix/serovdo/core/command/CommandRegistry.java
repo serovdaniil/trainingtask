@@ -9,14 +9,17 @@ import com.qulix.serovdo.core.command.function.project.RemoveProjectCommand;
 import com.qulix.serovdo.core.command.function.project.UpdateProjectCommand;
 import com.qulix.serovdo.core.command.function.task.CreateTaskCommand;
 import com.qulix.serovdo.core.command.function.task.RemoveTaskCommand;
+import com.qulix.serovdo.core.command.function.task.UpdateTaskCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowCreateEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.employee.ShowUpdateEmployeePageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowCreateProjectPageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowProjectPageCommand;
 import com.qulix.serovdo.core.command.page.project.ShowUpdateProjectPageCommand;
+import com.qulix.serovdo.core.command.page.task.ShowCreateTaskInProjectPageCommand;
 import com.qulix.serovdo.core.command.page.task.ShowCreateTaskPageCommand;
 import com.qulix.serovdo.core.command.page.task.ShowTaskPageCommand;
+import com.qulix.serovdo.core.command.page.task.ShowUpdateTaskPageCommand;
 
 public enum CommandRegistry {
     PROJECT_PAGE(ShowProjectPageCommand.getInstance(), "project_page"),
@@ -34,7 +37,10 @@ public enum CommandRegistry {
     TASK_PAGE(ShowTaskPageCommand.getInstance(), "task_page"),
     REMOVE_TASK(RemoveTaskCommand.getInstance(), "remove_task"),
     SHOW_CREATE_TASK_PAGE(ShowCreateTaskPageCommand.getInstance(), "show_create_task_page"),
+    SHOW_CREATE_TASK_IN_PROJECT_PAGE(ShowCreateTaskInProjectPageCommand.getInstance(), "show_create_task_in_project_page"),
     CREATE_TASK(CreateTaskCommand.getInstance(), "create_task"),
+    SHOW_UPDATE_TASK_PAGE(ShowUpdateTaskPageCommand.getInstance(), "show_update_task_page"),
+    UPDATE_TASK(UpdateTaskCommand.getInstance(), "update_task"),
     DEFAULT(ShowProjectPageCommand.getInstance(), "");
 
 

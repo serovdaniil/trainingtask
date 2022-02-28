@@ -3,7 +3,6 @@ package com.qulix.serovdo.core.command.function.project;
 import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
-import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
 import com.qulix.serovdo.api.entity.Project;
 import com.qulix.serovdo.core.exception.ServiceException;
@@ -22,14 +21,12 @@ public class UpdateProjectCommand implements Command {
 
     private final ProjectServiceImpl service;
     private final RequestFactory requestFactory;
-    private final PropertyContext propertyContext;
 
     private static final Logger logger = Logger.getLogger("com.wombat.nose");
 
     UpdateProjectCommand() {
         this.service = ProjectServiceImpl.getInstance();
         this.requestFactory = RequestFactory.getInstance();
-        this.propertyContext = PropertyContext.instance();
     }
 
     @Override
