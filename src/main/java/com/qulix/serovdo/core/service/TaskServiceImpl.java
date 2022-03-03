@@ -19,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
 
     private final DateValidatorImpl validator = new DateValidatorImpl();
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(TaskServiceImpl.class.getName());
 
     public TaskServiceImpl(TaskDaoImpl taskDao) {
         this.taskDao = taskDao;

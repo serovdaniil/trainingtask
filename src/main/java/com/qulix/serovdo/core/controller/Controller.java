@@ -4,6 +4,7 @@ import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
 import com.qulix.serovdo.api.controller.RequestFactory;
+import com.qulix.serovdo.core.connection.ConnectionDb;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(Controller.class.getName());
 
     private static final String COMMAND_NAME_PARAM = "command";
 

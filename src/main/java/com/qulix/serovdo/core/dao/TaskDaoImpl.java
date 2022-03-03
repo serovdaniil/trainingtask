@@ -38,7 +38,7 @@ public class TaskDaoImpl implements TaskDao {
             "on TASK.STATUS_TASK = ST.ID_STATUS JOIN EMPLOYEE E " +
             "on TASK.EMPLOYEE_ID = E.ID_EMPLOYEE WHERE TASK.PROJECT_ID=?";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(TaskDaoImpl.class.getName());
 
     private final ConnectionDb connectionBd;
 

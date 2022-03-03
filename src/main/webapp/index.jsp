@@ -4,7 +4,6 @@
     <title>JSP - Main page</title>
 </head>
 <body>
-aerbfsd
 <jsp:forward page="/controller"/>
 </body>
 </html>

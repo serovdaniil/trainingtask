@@ -20,9 +20,9 @@ import java.util.logging.Logger;
 public class RemoveEmployeeCommand implements Command {
     private static final String EMPLOYEE_ATTRIBUTE_NAME = "employees";
     private static final String PARAM_ID = "id";
-    private static final String EMPLOYEE_PAGE = "/controller?command=employee_page";
+    private static final String EMPLOYEE_PAGE = "/trainingtask/controller?command=employee_page";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(RemoveEmployeeCommand.class.getName());
 
     private final EmployeeServiceImpl service;
     private final RequestFactory requestFactory;

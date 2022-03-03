@@ -18,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final DateValidatorImpl validator = new DateValidatorImpl();
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
     public EmployeeServiceImpl(EmployeeDaoImpl employeeDao) {
         this.employeeDao = employeeDao;

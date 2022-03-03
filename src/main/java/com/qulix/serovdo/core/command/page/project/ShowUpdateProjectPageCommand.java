@@ -22,7 +22,7 @@ public class ShowUpdateProjectPageCommand implements Command {
     private static final String PARAM_ID = "id";
     private static final String PROJECT_PAGE = "page.updateProject";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowUpdateProjectPageCommand.class.getName());
 
     private final ProjectServiceImpl serviceProject;
     private final TaskServiceImpl serviceTask;

@@ -3,6 +3,7 @@ package com.qulix.serovdo.core.dao;
 import com.qulix.serovdo.api.dao.EmployeeDao;
 import com.qulix.serovdo.api.entity.Employee;
 import com.qulix.serovdo.core.connection.ConnectionDb;
+import com.qulix.serovdo.core.controller.Controller;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.EntityExtractionFailedException;
 
@@ -24,7 +25,7 @@ public class  EmployeeDaoImpl implements EmployeeDao {
     private static final String FIND_ALL_EMPLOYEE = "SELECT * FROM EMPLOYEE";
     private static final String FIND_EMPLOYEE_BY_ID = "SELECT * FROM EMPLOYEE WHERE ID_EMPLOYEE=?";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(EmployeeDaoImpl.class.getName());
 
     private final ConnectionDb connectionBd;
 

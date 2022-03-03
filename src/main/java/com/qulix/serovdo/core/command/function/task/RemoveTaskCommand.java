@@ -20,9 +20,9 @@ import java.util.logging.Logger;
 public class RemoveTaskCommand implements Command {
     private static final String TASK_ATTRIBUTE_NAME = "tasks";
     private static final String PARAM_ID = "id";
-    private static final String TASK_PAGE = "/controller?command=task_page";
+    private static final String TASK_PAGE = "/trainingtask/controller?command=task_page";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(RemoveTaskCommand.class.getName());
 
     private final TaskServiceImpl service;
     private final RequestFactory requestFactory;

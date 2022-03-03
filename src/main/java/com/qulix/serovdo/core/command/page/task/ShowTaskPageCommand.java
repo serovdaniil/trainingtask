@@ -23,7 +23,7 @@ public class ShowTaskPageCommand implements Command {
     private static final String PROJECT_ATTRIBUTE_NAME = "tasks";
     private static final String PROJECT_PAGE = "page.task";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowTaskPageCommand.class.getName());
 
     private final TaskServiceImpl service;
     private final RequestFactory requestFactory;

@@ -21,9 +21,9 @@ public class CreateProjectCommand implements Command {
     private static final String PROJECT_ATTRIBUTE_NAME = "projects";
     private static final String PARAM_NAME = "name";
     private static final String PARAM_DESCRIPTION = "description";
-    private static final String PROJECT_PAGE = "/controller?command=project_page";
+    private static final String PROJECT_PAGE = "/trainingtask/controller?command=project_page";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(CreateProjectCommand.class.getName());
 
     private final ProjectServiceImpl service;
     private final RequestFactory requestFactory;

@@ -18,7 +18,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     private final DateValidatorImpl validator = new DateValidatorImpl();
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ProjectServiceImpl.class.getName());
 
     public ProjectServiceImpl(ProjectDaoImpl projectDao) {
         this.projectDao = projectDao;

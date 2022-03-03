@@ -18,7 +18,7 @@ public class ShowUpdateEmployeePageCommand implements Command {
     private static final String PARAM_ID = "id";
     private static final String EMPLOYEE_PAGE = "page.updateEmployee";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowUpdateEmployeePageCommand.class.getName());
 
     private final EmployeeServiceImpl service;
     private final RequestFactory requestFactory;

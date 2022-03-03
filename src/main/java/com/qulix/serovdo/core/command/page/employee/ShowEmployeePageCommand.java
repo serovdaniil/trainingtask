@@ -21,7 +21,7 @@ public class ShowEmployeePageCommand implements Command {
     private static final String EMPLOYEE_ATTRIBUTE_NAME = "employees";
     private static final String EMPLOYEE_PAGE = "page.employee";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowEmployeePageCommand.class.getName());
 
     private final EmployeeServiceImpl service;
     private final RequestFactory requestFactory;

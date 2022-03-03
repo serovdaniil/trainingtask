@@ -22,12 +22,12 @@ public class UpdateTaskCommand implements Command {
     private static final String PARAM_NAME_STATUS = "nameStatus";
     private static final String PARAM_ID_EMPLOYEE = "idEmployee";
     private static final String PARAM_ID = "id";
-    private static final String TASK_PAGE = "/controller?command=task_page";
+    private static final String TASK_PAGE = "/trainingtask/controller?command=task_page";
 
     private final TaskServiceImpl service;
     private final RequestFactory requestFactory;
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(UpdateTaskCommand.class.getName());
 
     UpdateTaskCommand() {
         this.service = TaskServiceImpl.getInstance();

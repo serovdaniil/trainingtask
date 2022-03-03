@@ -23,7 +23,7 @@ public class ShowCreateTaskInProjectPageCommand implements Command {
     private static final String PARAM_ID = "idProjectForNewTask";
     private static final String TASK_PAGE = "page.createTask";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowCreateTaskInProjectPageCommand.class.getName());
 
     private final EmployeeServiceImpl serviceEmployee;
     private final ProjectServiceImpl serviceProject;

@@ -24,10 +24,10 @@ public class CreateEmployeeCommand implements Command {
     private static final String PARAM_LASTNAME = "lastName";
     private static final String PARAM_PATRONYMIC = "patronymic";
     private static final String PARAM_POSITION = "position";
-    private static final String EMPLOYEE_PAGE = "/controller?command=employee_page";
+    private static final String EMPLOYEE_PAGE = "/trainingtask/controller?command=employee_page";
     private static final String CREATE_EMPLOYEE_PAGE = "page.createEmployee";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(CreateEmployeeCommand.class.getName());
 
     private final EmployeeServiceImpl service;
     private final RequestFactory requestFactory;

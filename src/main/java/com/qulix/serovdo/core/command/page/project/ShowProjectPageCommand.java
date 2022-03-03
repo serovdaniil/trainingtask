@@ -21,7 +21,7 @@ public class ShowProjectPageCommand implements Command {
     private static final String PROJECT_ATTRIBUTE_NAME = "projects";
     private static final String PROJECT_PAGE = "page.project";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowProjectPageCommand.class.getName());
 
     private final ProjectServiceImpl service;
     private final RequestFactory requestFactory;

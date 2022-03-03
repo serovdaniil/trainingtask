@@ -19,7 +19,7 @@ public class ShowCreateTaskPageCommand implements Command {
     private static final String EMPLOYEE_ATTRIBUTE_NAME = "employees";
     private static final String TASK_PAGE = "page.createTask";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowCreateTaskPageCommand.class.getName());
 
     private final EmployeeServiceImpl serviceEmployee;
     private final ProjectServiceImpl serviceProject;

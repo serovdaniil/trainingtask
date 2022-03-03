@@ -22,7 +22,7 @@ public class ShowUpdateTaskPageCommand implements Command {
     private static final String PARAM_ID = "id";
     private static final String TASK_PAGE = "page.updateTask";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ShowUpdateTaskPageCommand.class.getName());
 
     private final EmployeeServiceImpl serviceEmployee;
     private final TaskServiceImpl serviceTask;

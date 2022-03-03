@@ -26,9 +26,9 @@ public class CreateTaskCommand implements Command {
     private static final String PARAM_FINISH_DATE = "finishDate";
     private static final String PARAM_STATUS = "nameStatus";
     private static final String PARAM_ID_EMPLOYEE = "idEmployee";
-    private static final String TASK_PAGE = "/controller?command=task_page";
+    private static final String TASK_PAGE = "/trainingtask/controller?command=task_page";
 
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(CreateTaskCommand.class.getName());
 
     private final TaskServiceImpl service;
     private final RequestFactory requestFactory;

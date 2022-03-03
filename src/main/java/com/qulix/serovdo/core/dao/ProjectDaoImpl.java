@@ -23,7 +23,7 @@ public class ProjectDaoImpl implements ProjectDao {
             "DESCRIPTION=? WHERE ID_PROJECT=?";
     private static final String FIND_PROJECT_BY_ID = "SELECT * FROM PROJECT WHERE ID_PROJECT=?";
     private static final String FIND_ALL_PROJECT = "SELECT * FROM PROJECT";
-    private static final Logger logger = Logger.getLogger("com.wombat.nose");
+    private static final Logger logger = Logger.getLogger(ProjectDaoImpl.class.getName());
 
     private final ConnectionDb connectionBd;
 

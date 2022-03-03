@@ -16,10 +16,8 @@ public class DateValidatorImpl implements DateValidator {
 
     @Override
     public boolean isNumberValidator(Long id) {
-        if ((id % 2 == 0) || (id % 2 == 1) || (id > 0)) {
-            return true;
-        }else {
-            return false;}
+        return id % 1 == 0;
+
     }
 
     @Override
