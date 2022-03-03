@@ -15,6 +15,7 @@
     <tr>
         <th><label for="status-input">Статус</label></th>
         <th><label for="nameTask-input">Наименование</label></th>
+        <th><label for="nameProject-input">Проект</label></th>
         <th><label for="job-input">Работа</label></th>
         <th><label for="startDate-input">Дата начала</label></th>
         <th><label for="finishDate-input">Дата окончания</label></th>
@@ -32,6 +33,8 @@
                            value="${task.status.nameStatus}"/></td>
                 <td><input id="nameTask-input" class="container" type="text" name="name" readonly
                            value="${task.name}"/></td>
+                <td><input id="nameProject-input" class="container" type="text" name="name" readonly
+                           value="${task.project.nameProject}"/></td>
                 <td><input id="job-input" class="container" type="text" name="job" readonly
                            value="${task.job}"/></td>
                 <td><input id="startDate-input" class="container" type="text" name="startDate" readonly

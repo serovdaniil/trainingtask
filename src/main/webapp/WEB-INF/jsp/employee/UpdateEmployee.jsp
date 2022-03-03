@@ -16,16 +16,16 @@
       method="post">
     <label for="employeeFirstName-input">Имя:</label>
     <input id="employeeFirstName-input" class="container" type="text" name="firstName"
-           pattern="^.{1,40}$" value="${requestScope.employee.firstName}"/>
+           pattern="^.{1,40}$" value="${requestScope.employee.firstName}" readonly/>
     <label for="employeeLastName-input">Фамилия:</label>
     <input id="employeeLastName-input" class="container" type="text" name="lastName"
-           pattern="^.{1,40}$" value="${requestScope.employee.lastName}"/>
+           pattern="^.{1,40}$" value="${requestScope.employee.lastName}" readonly/>
     <label for="employeePatronymic-input">Отчество:</label>
     <input id="employeePatronymic-input" class="container" type="text" name="patronymic"
-           pattern="^.{1,40}$" value="${requestScope.employee.patronymic}"/>
+           pattern="^.{1,40}$" value="${requestScope.employee.patronymic}" readonly/>
     <label for="employeePosition-input">Должность:</label>
     <input id="employeePosition-input" class="container" type="text" name="position"
-           pattern="^.{1,40}$" value="${requestScope.employee.position}"/>
+           pattern="^.{1,40}$" value="${requestScope.employee.position}" readonly/>
     <input type="hidden" name="id" value="${requestScope.employee.id}">
     <button type="submit" class="button">Обновить сотрудника</button>
     <a href="${pageContext.request.contextPath}/controller?command=employee_page">

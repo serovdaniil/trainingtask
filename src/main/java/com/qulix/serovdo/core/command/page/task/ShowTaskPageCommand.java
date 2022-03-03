@@ -5,10 +5,8 @@ import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
 import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
-import com.qulix.serovdo.api.entity.Project;
 import com.qulix.serovdo.api.entity.Task;
 import com.qulix.serovdo.core.exception.ServiceException;
-import com.qulix.serovdo.core.service.ProjectServiceImpl;
 import com.qulix.serovdo.core.service.TaskServiceImpl;
 
 import java.util.List;

@@ -19,13 +19,13 @@
 <form name="employee-form" action="${pageContext.request.contextPath}/controller?command=create_employee"
       method="post">
     <label for="employeeFirstName-input">Имя:</label>
-    <input id="employeeFirstName-input" class="container" type="text" name="firstName" pattern="^.{1,40}$"/>
+    <input id="employeeFirstName-input" class="container" type="text" name="firstName" pattern="^.{1,40}$" readonly/>
     <label for="employeeLastName-input">Фамилия:</label>
-    <input id="employeeLastName-input" class="container" type="text" name="lastName" pattern="^.{1,40}$"/>
+    <input id="employeeLastName-input" class="container" type="text" name="lastName" pattern="^.{1,40}$" readonly/>
     <label for="employeePatronymic-input">Отчество:</label>
-    <input id="employeePatronymic-input" class="container" type="text" name="patronymic" pattern="^.{1,40}$"/>
+    <input id="employeePatronymic-input" class="container" type="text" name="patronymic" pattern="^.{1,40}$" readonly/>
     <label for="employeePosition-input">Должность:</label>
-    <input id="employeePosition-input" class="container" type="text" name="position" pattern="^.{1,40}$"/>
+    <input id="employeePosition-input" class="container" type="text" name="position" pattern="^.{1,40}$"readonly/>
     <button type="submit" class="button">Создать сотрудника</button>
     <a href="${pageContext.request.contextPath}/controller?command=employee_page">
         Отменить</a>

@@ -17,7 +17,6 @@ public class DateValidatorImpl implements DateValidator {
     @Override
     public boolean isNumberValidator(Long id) {
         return id % 1 == 0;
-
     }
 
     @Override

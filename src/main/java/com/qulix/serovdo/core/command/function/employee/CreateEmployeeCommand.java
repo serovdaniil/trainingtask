@@ -3,7 +3,6 @@ package com.qulix.serovdo.core.command.function.employee;
 import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
-import com.qulix.serovdo.api.controller.PropertyContext;
 import com.qulix.serovdo.api.controller.RequestFactory;
 import com.qulix.serovdo.api.entity.Employee;
 import com.qulix.serovdo.core.exception.ServiceException;
@@ -25,7 +24,6 @@ public class CreateEmployeeCommand implements Command {
     private static final String PARAM_PATRONYMIC = "patronymic";
     private static final String PARAM_POSITION = "position";
     private static final String EMPLOYEE_PAGE = "/trainingtask/controller?command=employee_page";
-    private static final String CREATE_EMPLOYEE_PAGE = "page.createEmployee";
 
     private static final Logger logger = Logger.getLogger(CreateEmployeeCommand.class.getName());
 

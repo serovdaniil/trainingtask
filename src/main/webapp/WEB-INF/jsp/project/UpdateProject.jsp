@@ -36,9 +36,8 @@
         <th><label for="finishDate-input">Дата окончания</label></th>
         <th><label for="personalName-input">Исполнитель</label></th>
         <th><a class="create"
-               href="${pageContext.request.contextPath}/controller?command=show_create_task_in_project_page">Создать
+               href="${pageContext.request.contextPath}/controller?command=show_create_task_in_project_page&idProjectForNewTask./=${requestScope.project.id}">Создать
             задачу</a>
-            <input type="hidden" name="idProjectForNewTask" value="${requestScope.project.id}">
         </th>
     </tr>
     <c:forEach var="task" items="${requestScope.tasks}">

@@ -1,7 +1,5 @@
 package com.qulix.serovdo.core.connection;
 
-import com.qulix.serovdo.core.command.function.employee.CreateEmployeeCommand;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

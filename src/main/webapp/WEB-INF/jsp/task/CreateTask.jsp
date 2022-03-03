@@ -15,7 +15,7 @@
 <form name="task" action="${pageContext.request.contextPath}/controller?command=create_task"
       method="post">
     <label for="taskName-input">Название задачи</label>
-    <input id="taskName-input" class="container" type="text" name="name"/>
+    <input id="taskName-input" class="container" type="text" name="name" readonly/>
     <label for="projectName-input">Название проекта</label>
     <c:choose>
         <c:when test="${empty requestScope.status}">
@@ -34,11 +34,11 @@
         </c:otherwise>
     </c:choose>
     <label for="taskJob-input">Сколько требуется времени на выполнение</label>
-    <input id="taskJob-input" class="container" type="text" name="job"/>
+    <input id="taskJob-input" class="container" type="text" name="job" readonly/>
     <label for="taskStartDate-input">Дата начала</label>
-    <input id="taskStartDate-input" class="container" type="text" name="startDate"/>
+    <input id="taskStartDate-input" class="container" type="text" name="startDate" readonly/>
     <label for="taskFinishDate-input">Дата окончания</label>
-    <input id="taskFinishDate-input" class="container" type="text" name="finishDate"/>
+    <input id="taskFinishDate-input" class="container" type="text" name="finishDate" readonly/>
     <label for="taskStatus-input">Статус задачи</label>
     <select id="taskStatus-input" name="nameStatus">
         <option value="1"> Не начата</option>

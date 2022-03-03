@@ -19,8 +19,6 @@ dependencies {
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
-    //   implementation("org.apache.tomcat:tomcat:9.0.54")
-
     def tomcatVersion = '8.0.42'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",

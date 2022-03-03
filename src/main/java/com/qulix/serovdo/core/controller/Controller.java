@@ -4,7 +4,6 @@ import com.qulix.serovdo.api.command.Command;
 import com.qulix.serovdo.api.command.CommandRequest;
 import com.qulix.serovdo.api.command.CommandResponse;
 import com.qulix.serovdo.api.controller.RequestFactory;
-import com.qulix.serovdo.core.connection.ConnectionDb;
 
 import java.io.IOException;
 import java.util.logging.Logger;

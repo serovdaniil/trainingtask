@@ -3,7 +3,6 @@ package com.qulix.serovdo.core.dao;
 import com.qulix.serovdo.api.dao.EmployeeDao;
 import com.qulix.serovdo.api.entity.Employee;
 import com.qulix.serovdo.core.connection.ConnectionDb;
-import com.qulix.serovdo.core.controller.Controller;
 import com.qulix.serovdo.core.exception.DaoException;
 import com.qulix.serovdo.core.exception.EntityExtractionFailedException;
 
